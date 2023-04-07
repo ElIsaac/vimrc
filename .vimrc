@@ -15,9 +15,6 @@ Plug 'junegunn/vim-easy-align'
 " Any valid git URL is allowed
 Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
-" Multiple Plug commands can be written in a single line using | separators
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-
 Plug 'dense-analysis/ale'
 Plug 'voldikss/vim-floaterm'
 
@@ -25,14 +22,9 @@ Plug 'voldikss/vim-floaterm'
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
-" Using a non-default branch
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
 
-" Unmanaged plugin (manually installed and updated)
-Plug '~/my-prototype-plugin'
-
-Plug 'Valloric/YouCompleteMe'
+"Clang
 Plug 'rhysd/vim-clang-format'
 
 " Git
@@ -48,7 +40,7 @@ Plug 'preservim/nerdcommenter'
 Plug 'dense-analysis/ale'
 
 " NERDTree
-Plug 'preservim/nerdtree'
+Plug 'scrooloose/nerdtree'
 "
 " Statusbar
 Plug 'itchyny/lightline.vim'
@@ -67,6 +59,17 @@ Plug 'morhetz/gruvbox'
 Plug 'ap/vim-buftabline'
 " Js
 Plug 'pangloss/vim-javascript'
+
+
+" Yc
+Plug 'Valloric/YouCompleteMe'
+
+"buscador de texto
+Plug 'easymotion/vim-easymotion'
+
+"mover entre archivos
+Plug 'christoomey/vim-tmux-navigator'
+
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
 call plug#end()
@@ -74,10 +77,28 @@ call plug#end()
 "   filetype indent off   " Disable file-type-specific indentation
 "   syntax off            " Disable syntax highlighting
 "   " Configuración de YouCompleteMe
-let g:ycm_python_binary_path = '/data/data/com.termux/files/usr/bin/python'
-let g:ycm_semantic_triggers =  {'h': ['<', '>', '/']}
-let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+" let g:ycm_python_binary_path = '/data/data/com.termux/files/usr/bin/python'
+" let g:ycm_semantic_triggers =  {'h': ['<', '>', '/']}
+" let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+
+let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+set completeopt-=preview
+
+
 let g:NERDTreeWinPos = "right"
 let g:NERDTreeChDirMode = 2
 let g:conque_gdb=1
 nmap <F12> :ClangFormat<CR>
+
+" set background=dark
+" colorscheme gruvbox
+" let g:gruvbox_contrast_dark ="hard"
+
+let mapleader=" "
+nmap <Leader>s <Plug>(easymotion-s2)
+
+let NERDTreeQuitOnOpen=1
+nmap <Leader>nt :NERDTreeFind<CR>
+
+nmap <Leader>f :FloatermNew<CR>
+nmap <Leader>fk :FloatermKill<CR>
