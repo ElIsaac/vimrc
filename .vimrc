@@ -28,14 +28,6 @@ Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 " Using a non-default branch
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
-" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-Plug 'fatih/vim-go', { 'tag': '*' }
-
-" Plugin options
-Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
-
-" Plugin outside ~/.vim/plugged with post-update hook
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " Unmanaged plugin (manually installed and updated)
 Plug '~/my-prototype-plugin'
@@ -43,6 +35,38 @@ Plug '~/my-prototype-plugin'
 Plug 'Valloric/YouCompleteMe'
 Plug 'rhysd/vim-clang-format'
 
+" Git
+Plug 'tpope/vim-fugitive'
+
+" Code completion
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Code commenter
+Plug 'preservim/nerdcommenter'
+"
+" Syntax highlighting
+Plug 'dense-analysis/ale'
+
+" NERDTree
+Plug 'preservim/nerdtree'
+"
+" Statusbar
+Plug 'itchyny/lightline.vim'
+"
+" Finder
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+" File finder
+Plug 'vifm/vifm.vim'
+
+" Theme
+Plug 'morhetz/gruvbox'
+
+" Tabs
+Plug 'ap/vim-buftabline'
+" Js
+Plug 'pangloss/vim-javascript'
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
 call plug#end()
