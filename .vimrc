@@ -53,6 +53,10 @@ Plug 'junegunn/fzf.vim'
 Plug 'vifm/vifm.vim'
 
 " Theme
+Plug 'fcpg/vim-orbital'
+Plug 'nanotech/jellybeans.vim'
+Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
+Plug 'ayu-theme/ayu-vim'
 Plug 'morhetz/gruvbox'
 
 " Tabs
@@ -90,9 +94,9 @@ let g:NERDTreeChDirMode = 2
 let g:conque_gdb=1
 nmap <F12> :ClangFormat<CR>
 
-" set background=dark
-" colorscheme gruvbox
-" let g:gruvbox_contrast_dark ="hard"
+set background=dark
+colorscheme spaceduck
+let g:gruvbox_contrast_dark ="hard"
 
 let mapleader=" "
 nmap <Leader>s <Plug>(easymotion-s2)
@@ -101,4 +105,7 @@ let NERDTreeQuitOnOpen=1
 nmap <Leader>nt :NERDTreeFind<CR>
 
 nmap <Leader>f :FloatermNew<CR>
+nmap <Leader>ft :FloatermToggle<CR>
+nmap <Leader>fn :FloatermNext<CR>
+nmap <Leader>fp :FloatermPrev<CR>
 nmap <Leader>fk :FloatermKill<CR>
