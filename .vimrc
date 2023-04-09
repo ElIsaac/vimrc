@@ -1,111 +1,81 @@
+" Configuración de plugins con Vim-Plug
 call plug#begin()
-" The default plugin directory will be as follows:
-"   - Vim (Linux/macOS): '~/.vim/plugged'
-"   - Vim (Windows): '~/vimfiles/plugged'
-"   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
-" You can specify a custom plugin directory by passing it as the argument
-"   - e.g. `call plug#begin('~/.vim/plugged')`
-"   - Avoid using standard Vim directory names like 'plugin'
 
-" Make sure you use single quotes
-
-" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+" Plugins básicos
 Plug 'junegunn/vim-easy-align'
-
-" Any valid git URL is allowed
 Plug 'https://github.com/junegunn/vim-github-dashboard.git'
-
 Plug 'dense-analysis/ale'
 Plug 'voldikss/vim-floaterm'
-
-" On-demand loading
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-
-
-
-"Clang
 Plug 'rhysd/vim-clang-format'
-
-" Git
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'pangloss/vim-javascript'
+Plug 'sirver/ultisnips'
+Plug 'christoomey/vim-tmux-navigator'
 
-" Code completion
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" Code commenter
-Plug 'preservim/nerdcommenter'
-"
-" Syntax highlighting
-Plug 'dense-analysis/ale'
-
-" NERDTree
-Plug 'scrooloose/nerdtree'
-"
-" Statusbar
-Plug 'itchyny/lightline.vim'
-"
-" Finder
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-
-" File finder
-Plug 'vifm/vifm.vim'
-
-" Theme
+" Temas
 Plug 'fcpg/vim-orbital'
 Plug 'nanotech/jellybeans.vim'
 Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
 Plug 'ayu-theme/ayu-vim'
 Plug 'morhetz/gruvbox'
 
-" Tabs
-Plug 'ap/vim-buftabline'
-" Js
-Plug 'pangloss/vim-javascript'
-
-
-" Yc
+" Plugins para la IDE
+Plug 'mhinz/vim-signify'
+Plug 'yggdroot/indentline'
+Plug 'preservim/nerdcommenter'
 Plug 'Valloric/YouCompleteMe'
-
-"buscador de texto
+Plug 'maximbaz/lightline-ale'
+Plug 'itchyny/lightline.vim'
+Plug 'shinchu/lightline-gruvbox.vim'
+Plug 'ap/vim-buftabline'
+Plug 'vifm/vifm.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'alvan/vim-closetag'
+Plug 'tpope/vim-surround'
 Plug 'easymotion/vim-easymotion'
+Plug 'ElIsaac/compiler-cpp-vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
-"mover entre archivos
-Plug 'christoomey/vim-tmux-navigator'
-
-" Initialize plugin system
-" - Automatically executes `filetype plugin indent on` and `syntax enable`.
+" Configuración final de Vim-Plug
 call plug#end()
-" You can revert the settings after the call like so:
-"   filetype indent off   " Disable file-type-specific indentation
-"   syntax off            " Disable syntax highlighting
-"   " Configuración de YouCompleteMe
-" let g:ycm_python_binary_path = '/data/data/com.termux/files/usr/bin/python'
-" let g:ycm_semantic_triggers =  {'h': ['<', '>', '/']}
-" let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
+" Configuración general del editor
+set number
+set background=dark
+colorscheme gruvbox
+let g:gruvbox_contrast_dark ="hard"
+
+" Configuración de YouCompleteMe
 let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 set completeopt-=preview
 
-
+" Configuración de NERDTree
 let g:NERDTreeWinPos = "right"
 let g:NERDTreeChDirMode = 2
-let g:conque_gdb=1
-nmap <F12> :ClangFormat<CR>
-
-set background=dark
-colorscheme spaceduck
-let g:gruvbox_contrast_dark ="hard"
-
-let mapleader=" "
-nmap <Leader>s <Plug>(easymotion-s2)
-
 let NERDTreeQuitOnOpen=1
-nmap <Leader>nt :NERDTreeFind<CR>
+map <Leader>nt :NERDTreeFind<CR>
 
+" Configuración de Floaterm
 nmap <Leader>f :FloatermNew<CR>
 nmap <Leader>ft :FloatermToggle<CR>
 nmap <Leader>fn :FloatermNext<CR>
 nmap <Leader>fp :FloatermPrev<CR>
 nmap <Leader>fk :FloatermKill<CR>
+
+" Configuración de atajos de teclado
+let mapleader=" "
+nmap <F12> :ClangFormat<CR>
+nmap <Leader>s <Plug>(easymotion-s2)
+nnoremap <Leader>> 10<C-w>>
+nnoremap <Leader>< 10<C-w><
+map <Leader>j :+10<CR>
+map <Leader>k  :-10<CR>
+
+" Configuración de la barra de estado
+set laststatus=2
+
+map <Leader>com :CompilerCPP<CR>
