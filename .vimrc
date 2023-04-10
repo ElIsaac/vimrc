@@ -45,7 +45,7 @@ call plug#end()
 set number
 let mapleader=" "
 set background=dark
-colorscheme gruvbox
+colorscheme murphy
 let g:gruvbox_contrast_dark ="hard"
 
 " Configuración de YouCompleteMe 
