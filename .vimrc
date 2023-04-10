@@ -1,16 +1,14 @@
-" Configuración de plugins con Vim-Plug
-call plug#begin()
-
-" Plugins básicos
-Plug 'junegunn/vim-easy-align'
+" Configuración de plugins con Vim-Plug 
+call plug#begin() 
+" Plugins básicos 
+Plug 'junegunn/vim-easy-align' 
 Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 Plug 'dense-analysis/ale'
 Plug 'voldikss/vim-floaterm'
-Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'preservim/nerdtree' |
+            \ Plug 'Xuyuanp/nerdtree-git-plugin' |
+            \ Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-Plug 'rhysd/vim-clang-format'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-repeat'
 Plug 'pangloss/vim-javascript'
 Plug 'sirver/ultisnips'
 Plug 'christoomey/vim-tmux-navigator'
@@ -21,15 +19,14 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
 Plug 'ayu-theme/ayu-vim'
 Plug 'morhetz/gruvbox'
+Plug 'vim-airline/vim-airline-themes'
 
 " Plugins para la IDE
 Plug 'mhinz/vim-signify'
 Plug 'yggdroot/indentline'
 Plug 'preservim/nerdcommenter'
 Plug 'Valloric/YouCompleteMe'
-Plug 'maximbaz/lightline-ale'
-Plug 'itchyny/lightline.vim'
-Plug 'shinchu/lightline-gruvbox.vim'
+Plug 'vim-airline/vim-airline'
 Plug 'ap/vim-buftabline'
 Plug 'vifm/vifm.vim'
 Plug 'jiangmiao/auto-pairs'
@@ -40,16 +37,18 @@ Plug 'ElIsaac/compiler-cpp-vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+Plug 'tpope/vim-repeat'
 " Configuración final de Vim-Plug
 call plug#end()
 
 " Configuración general del editor
 set number
+let mapleader=" "
 set background=dark
 colorscheme gruvbox
 let g:gruvbox_contrast_dark ="hard"
 
-" Configuración de YouCompleteMe
+" Configuración de YouCompleteMe 
 let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 set completeopt-=preview
 
@@ -67,7 +66,6 @@ nmap <Leader>fp :FloatermPrev<CR>
 nmap <Leader>fk :FloatermKill<CR>
 
 " Configuración de atajos de teclado
-let mapleader=" "
 nmap <F12> :ClangFormat<CR>
 nmap <Leader>s <Plug>(easymotion-s2)
 nnoremap <Leader>> 10<C-w>>
@@ -78,4 +76,47 @@ map <Leader>k  :-10<CR>
 " Configuración de la barra de estado
 set laststatus=2
 
-map <Leader>com :CompilerCPP<CR>
+" air-line
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
+
+" airline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
+
+map <Leader>bn :bNext<CR>
+map <Leader>co :CompilerCPP<CR>
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+                \ 'Modified'  :'✹',
+                \ 'Staged'    :'✚',
+                \ 'Untracked' :'✭',
+                \ 'Renamed'   :'➜',
+                \ 'Unmerged'  :'═',
+                \ 'Deleted'   :'✖',
+                \ 'Dirty'     :'✗',
+                \ 'Ignored'   :'☒',
+                \ 'Clean'     :'✔︎',
+                \ 'Unknown'   :'?',
+                \ }
